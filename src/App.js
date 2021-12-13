@@ -1,5 +1,7 @@
 import React, { useRef, useState }  from 'react';
 import './App.css';
+import { About } from './component/About';
+import { Header } from './component/Header';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
@@ -8,6 +10,15 @@ import 'firebase/compat/analytics';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBBtn, MDBIcon, MDBInputGroup,
+  MDBInputGroupElement,   } from 'mdb-react-ui-kit';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes
+} from 'react-router-dom';
 
 firebase.initializeApp({
   apiKey: "AIzaSyAf-e_XlIx9VKun65OG8DX12WBlg8P_49g",
@@ -28,19 +39,29 @@ function App() {
   const [user] =useAuthState(auth);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h3>SuperChat🔥</h3>
-        <SignOut />
-      </header>
-      <section>
-        {user ? <ChatRoom></ChatRoom> : <SignIn></SignIn>}
-      </section> 
+    <>
+      <Router>
+        <Header auth = {auth}></Header>
+        <Routes>
+          <Route exact path="/" element={
+            <>
+              <section>
+                {user ? <ChatRoom></ChatRoom> : <SignIn></SignIn>}
+              </section> 
+            </>
+            }>
+          </Route>
+          <Route exact path="/about" element={<About/>}/>
+          <Route exact path="/signout" element={<SignOut/>}/>
+        </Routes>
+        {/* <SignOut /> */}
+      </Router>
       
-      
-    </div>
+    </>
   );
 }
+
+
 
 function SignIn() {
   const signInWithGoogle = () => {
@@ -48,7 +69,18 @@ function SignIn() {
     auth.signInWithPopup(provider);
   }
   return (
-    <button className="sign-in" onClick={signInWithGoogle}>Sign In</button>
+
+    <div className="d-flex align-items-center justify-content-center" style={{minHeight: '100vh', backgroundColor: '#064635'}}>
+      <MDBCard className='shadow-4-strong m-3' style={{ maxWidth: '50rem', backgroundColor: '#5F7A61'}}>
+        <MDBCardBody>
+          <MDBCardTitle style={{color: '#D5EEBB'}}>Start Chatting💬</MDBCardTitle>
+          <MDBCardText className='mt-5 mb-5'>
+            This is the end-to-end encrypted chatting app specially designed for you. Why wait? Sign in and EXPLORE! ✨
+          </MDBCardText>
+          <MDBBtn rounded className="sign-in" onClick={signInWithGoogle} style={{backgroundColor: '#F0BB62', color: 'black'}}>Sign In with  <MDBIcon fab icon="google"/></MDBBtn>
+        </MDBCardBody>
+      </MDBCard>
+    </div>
   )
 }
 
@@ -92,12 +124,19 @@ function ChatRoom() {
 
     </main>
 
-    <form onSubmit={sendMessage}>
+    {/* <form onSubmit={sendMessage}>
 
       <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
-
       <button type="submit" disabled={!formValue}>🕊️</button>
+    </form> */}
 
+    <form onSubmit={sendMessage}>
+      <MDBInputGroup onSubmit={sendMessage} className='mb-3' size='lg' style={{position: 'fixed',
+        bottom: '0',
+        width: '100%'}}>
+        <MDBInputGroupElement value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" type='text' />
+        <MDBBtn type="submit" disabled={!formValue}>🕊️</MDBBtn>
+      </MDBInputGroup>
     </form>
   </>)
 }
