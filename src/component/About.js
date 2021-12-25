@@ -18,7 +18,7 @@ export const About = () => {
                         I'm Sarvesh. I've developed this Chat App using React ⚛️ with ❤️. Wanna know more about me? Hit below button 😉 <br /> <br />
                         Happy Coding ✌️ 
                     </MDBCardText>
-                    <MDBBtn rounded style={{backgroundColor: '#2E2E2E'}} href='https://www.linkedin.com/in/sarvesh-nagar/'>Know More</MDBBtn>
+                    <MDBBtn rounded style={{backgroundColor: '#2E2E2E'}} href='https://sarveshnagar.000webhostapp.com/'>Know More</MDBBtn>
                 </MDBCardBody>
             </MDBCard>
         </div>

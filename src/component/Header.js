@@ -40,6 +40,9 @@ export const Header = (props) => {
               <MDBNavbarItem>
                 <MDBNavbarLink href='/about'>About</MDBNavbarLink>
               </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href='https://www.buymeacoffee.com/sarveshnagar'>☕</MDBNavbarLink>
+              </MDBNavbarItem>
               <MDBNavbarItem onClick={() => props.auth.signOut()}>
                 <MDBNavbarLink href='/'>Sign Out</MDBNavbarLink>
               </MDBNavbarItem>
@@ -73,6 +76,9 @@ export const Header = (props) => {
                 </MDBNavbarItem>
                 <MDBNavbarItem>
                   <MDBNavbarLink href='/about'>About</MDBNavbarLink>
+                </MDBNavbarItem>
+                <MDBNavbarItem>
+                  <MDBNavbarLink href='https://www.buymeacoffee.com/sarveshnagar'>☕</MDBNavbarLink>
                 </MDBNavbarItem>
               </MDBNavbarNav>
 
