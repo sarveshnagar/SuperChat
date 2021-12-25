@@ -15,3 +15,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+title {
+  font-family: 'Roboto Mono';
+}
+
+.font {
+  font-family: 'Roboto Mono';
+}

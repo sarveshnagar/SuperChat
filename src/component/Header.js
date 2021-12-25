@@ -17,7 +17,7 @@ export const Header = (props) => {
     const isLoggedIn = props.auth.currentUser;
     if(isLoggedIn)
       return (
-          <MDBNavbar expand='lg' light bgColor='light'>
+        <MDBNavbar className='font' expand='lg' dark bgColor='dark'>
         <MDBContainer fluid>
           <MDBNavbarBrand href='/'>SuperChat🔥</MDBNavbarBrand>
 
@@ -51,7 +51,7 @@ export const Header = (props) => {
       )
     else
       return (
-        <MDBNavbar expand='lg' light bgColor='light'>
+        <MDBNavbar expand='lg' dark bgColor='dark' className='font'>
           <MDBContainer fluid>
             <MDBNavbarBrand href='/'>SuperChat🔥</MDBNavbarBrand>
 
